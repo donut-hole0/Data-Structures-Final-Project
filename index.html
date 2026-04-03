@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINES - Gambling Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⛏️ MINES</h1>
+            <div class="balance">Balance: $<span id="balance">1000</span></div>
+        </div>
+
+        <div class="game-wrapper">
+            <!-- Left Panel: Settings -->
+            <div class="left-panel">
+                <div class="settings-section">
+                    <h3>Bet Amount</h3>
+                    <div class="bet-inputs">
+                        <input type="number" id="betAmount" value="10" min="1" max="1000">
+                        <div class="bet-buttons">
+                            <button class="bet-btn" onclick="setBet(10)">$10</button>
+                            <button class="bet-btn" onclick="setBet(25)">$25</button>
+                            <button class="bet-btn" onclick="setBet(50)">$50</button>
+                            <button class="bet-btn" onclick="setBet(100)">$100</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3>Difficulty (Mines)</h3>
+                    <div class="difficulty-buttons">
+                        <button class="diff-btn active" onclick="setDifficulty(1)">
+                            <div class="mines-count">1</div>
+                            <div class="label">Easy</div>
+                        </button>
+                        <button class="diff-btn" onclick="setDifficulty(3)">
+                            <div class="mines-count">3</div>
+                            <div class="label">Normal</div>
+                        </button>
+                        <button class="diff-btn" onclick="setDifficulty(5)">
+                            <div class="mines-count">5</div>
+                            <div class="label">Hard</div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <div class="info-item">
+                        <span>Mines:</span>
+                        <strong id="mineCount">1</strong>
+                    </div>
+                    <div class="info-item">
+                        <span>Safe Tiles:</span>
+                        <strong id="safeCount">24</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center Panel: Game Grid -->
+            <div class="center-panel">
+                <div id="gameGrid" class="game-grid"></div>
+            </div>
+
+            <!-- Right Panel: Stats -->
+            <div class="right-panel">
+                <div class="stats-section">
+                    <div class="stat">
+                        <div class="stat-label">Current Bet</div>
+                        <div class="stat-value">$<span id="displayBet">10</span></div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Multiplier</div>
+                        <div class="stat-value multiplier"><span id="multiplier">1.00</span>x</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Win Amount</div>
+                        <div class="stat-value profit">$<span id="winAmount">0</span></div>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button id="playBtn" class="action-btn play-btn" onclick="startGame()">PLAY</button>
+                    <button id="cashoutBtn" class="action-btn cashout-btn" onclick="cashout()" disabled>CASHOUT</button>
+                </div>
+
+                <div class="recent-section">
+                    <h4>Recent Plays</h4>
+                    <div id="recentPlays" class="recent-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="game.js"></script>
+</body>
+</html>
